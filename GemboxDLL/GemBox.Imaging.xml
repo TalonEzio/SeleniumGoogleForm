@@ -1,0 +1,322 @@
+<?xml version="1.0"?>
+<doc>
+  <assembly>
+    <name>GemBox.Imaging</name>
+  </assembly>
+  <members>
+    <member name="T:GemBox.Imaging.ComponentInfo">
+      <summary>
+            Contains static licensing methods and diagnostic information about executing GemBox.Imaging assembly. 
+            </summary>
+    </member>
+    <member name="E:GemBox.Imaging.ComponentInfo.FreeLimitReached">
+      <summary>
+            Occurs in loading or saving <see cref="T:GemBox.Imaging.Image" /> when GemBox.Imaging assembly is used with <b>FREE-LIMITED-KEY</b> license key, and the free limit is reached.
+            </summary>
+    </member>
+    <member name="P:GemBox.Imaging.ComponentInfo.InfoOut">
+      <summary>
+            Used for outputting information logs about GemBox.Imaging.
+            </summary>
+    </member>
+    <member name="P:GemBox.Imaging.ComponentInfo.Title">
+      <summary>
+            Gets GemBox.Imaging assembly title.
+            </summary>
+      <value>GemBox.Imaging assembly title.</value>
+    </member>
+    <member name="P:GemBox.Imaging.ComponentInfo.FullVersion">
+      <summary>
+            Gets GemBox.Imaging assembly full version.
+            </summary>
+      <value>GemBox.Imaging assembly full version.</value>
+    </member>
+    <member name="M:GemBox.Imaging.ComponentInfo.SetLicense(System.String)">
+      <summary>
+            Sets the license (serial) key.
+            </summary>
+      <param name="serialKey">The serial key.</param>
+      <remarks>
+        <para>You should call this method before using any other class from GemBox.Imaging assembly.</para>
+        <para>The key can only be set once (if you try another key, it will be ignored).</para>
+        <para>The best place to call this method is from a static constructor of your application's main class.</para>
+        <para>Valid serial key has multiple groups of alphanumeric characters, separated with dashes.</para>
+        <para>To use the assembly in free limited mode use, <b>FREE-LIMITED-KEY</b> as <paramref name="serialKey" />.</para>
+        <para>For more information about GemBox.Imaging evaluation and licensing, see <see href="https://www.gemboxsoftware.com/imaging/docs/evaluation-and-licensing.html" target="_self">evaluation and licensing</see>.</para>
+      </remarks>
+    </member>
+    <member name="T:GemBox.Imaging.FreeLimitEventArgs">
+      <summary>
+            Provides data for the <see cref="E:GemBox.Imaging.ComponentInfo.FreeLimitReached" /> event.
+            </summary>
+    </member>
+    <member name="P:GemBox.Imaging.FreeLimitEventArgs.FreeLimitReachedAction">
+      <summary>
+            Gets or sets the choice for proceeding when the free limit is reached.
+            </summary>
+      <value>
+            The choice for proceeding when the free limit is reached.
+            </value>
+    </member>
+    <member name="P:GemBox.Imaging.FreeLimitEventArgs.Image">
+      <summary>
+            Gets the image on which the limit was reached.
+            </summary>
+      <value>
+            The image on which the limit was reached.
+            </value>
+    </member>
+    <member name="T:GemBox.Imaging.FreeLimitReachedAction">
+      <summary>
+            Type of action that can be chosen when the free limit is reached.
+            </summary>
+    </member>
+    <member name="F:GemBox.Imaging.FreeLimitReachedAction.ThrowException">
+      <summary>
+            Throw <see cref="T:GemBox.Imaging.FreeLimitReachedException" />.
+            </summary>
+    </member>
+    <member name="F:GemBox.Imaging.FreeLimitReachedAction.Stop">
+      <summary>
+            Stop reading/writing.
+            </summary>
+    </member>
+    <member name="F:GemBox.Imaging.FreeLimitReachedAction.ContinueAsTrial">
+      <summary>
+            Continue reading/writing using trial mode.
+            </summary>
+    </member>
+    <member name="T:GemBox.Imaging.FreeLimitReachedException">
+      <summary>
+            Exception that occurs when the free limit is reached.
+            </summary>
+    </member>
+    <member name="T:GemBox.Imaging.Image">
+      <summary>
+            Represents either a single, constant set of pixels at a specific size and resolution (raster image) or a set of drawing commands (vector image).
+            </summary>
+    </member>
+    <member name="P:GemBox.Imaging.Image.Width">
+      <summary>
+            Gets the width of the image in pixels.
+            </summary>
+      <value>
+            The width of the image in pixels.
+            </value>
+    </member>
+    <member name="P:GemBox.Imaging.Image.Height">
+      <summary>
+            Gets the height of the image in pixels.
+            </summary>
+      <value>
+            The height of the image in pixels.
+            </value>
+    </member>
+    <member name="P:GemBox.Imaging.Image.DpiX">
+      <summary>
+            Gets the horizontal dots per inch (dpi) of the image or <see cref="F:System.Double.NaN" />.
+            </summary>
+      <value>
+            The horizontal dots per inch (dpi) of the image; that is, the dots per inch (dpi) along the x-axis.
+            </value>
+    </member>
+    <member name="P:GemBox.Imaging.Image.DpiY">
+      <summary>
+            Gets the vertical dots per inch (dpi) of the image or <see cref="F:System.Double.NaN" />.
+            </summary>
+      <value>
+            The vertical dots per inch (dpi) of the image; that is, the dots per inch (dpi) along the y-axis.
+            </value>
+    </member>
+    <member name="M:GemBox.Imaging.Image.Load(System.String)">
+      <summary>
+            Loads an <see cref="T:GemBox.Imaging.Image" /> from a file with the specified path.
+            </summary>
+      <param name="path">The path to a file from which to load an <see cref="T:GemBox.Imaging.Image" />.</param>
+      <returns>
+            A loaded <see cref="T:GemBox.Imaging.Image" />.
+            </returns>
+      <exception cref="T:System.ArgumentNullException">
+        <paramref name="path" /> is <see langword="null" />.</exception>
+    </member>
+    <member name="M:GemBox.Imaging.Image.Load(System.IO.Stream)">
+      <summary>
+            Loads an <see cref="T:GemBox.Imaging.Image" /> from the specified stream.
+            </summary>
+      <param name="stream">The stream from which to load an <see cref="T:GemBox.Imaging.Image" />.</param>
+      <returns>
+            A loaded <see cref="T:GemBox.Imaging.Image" />.
+            </returns>
+      <exception cref="T:System.ArgumentNullException">
+        <paramref name="stream" /> is <see langword="null" />.</exception>
+    </member>
+    <member name="M:GemBox.Imaging.Image.Save(System.String)">
+      <summary>
+        <para>Saves the <see cref="T:GemBox.Imaging.Image" /> to a file with the specified path.</para>
+      </summary>
+      <param name="path">The path to a file to which to save the <see cref="T:GemBox.Imaging.Image" />.</param>
+      <exception cref="T:System.ArgumentNullException">
+        <paramref name="path" /> is <see langword="null" />.</exception>
+    </member>
+    <member name="M:GemBox.Imaging.Image.Save(System.String,GemBox.Imaging.ImageFileFormat)">
+      <summary>
+        <para>Saves the <see cref="T:GemBox.Imaging.Image" /> to a file with the specified path.</para>
+      </summary>
+      <param name="path">The path to a file to which to save the <see cref="T:GemBox.Imaging.Image" />.</param>
+      <param name="fileFormat">The file format in which to save the <see cref="T:GemBox.Imaging.Image" />.</param>
+      <exception cref="T:System.ArgumentNullException">
+        <paramref name="path" /> is <see langword="null" />.</exception>
+    </member>
+    <member name="M:GemBox.Imaging.Image.Save(System.IO.Stream,GemBox.Imaging.ImageFileFormat)">
+      <summary>
+        <para>Saves the <see cref="T:GemBox.Imaging.Image" /> to the specified stream.</para>
+      </summary>
+      <param name="stream">The stream to which to save the <see cref="T:GemBox.Imaging.Image" />.</param>
+      <param name="fileFormat">The file format in which to save the <see cref="T:GemBox.Imaging.Image" />.</param>
+      <exception cref="T:System.ArgumentNullException">
+        <paramref name="stream" /> is <see langword="null" />.</exception>
+    </member>
+    <member name="M:GemBox.Imaging.Image.Resize(System.Int32,System.Int32)">
+      <summary>
+            Resizes the image to the given size.
+            </summary>
+      <param name="width">Target width of the resulting image.</param>
+      <param name="height">Target height of the resulting image.</param>
+    </member>
+    <member name="M:GemBox.Imaging.Image.Crop(System.Int32,System.Int32,System.Int32,System.Int32)">
+      <summary>
+            Crops the image to the given position and size.
+            </summary>
+      <param name="x">The horizontal position of cropping.</param>
+      <param name="y">The vertical position of cropping.</param>
+      <param name="width">Width of the crop area.</param>
+      <param name="height">Height of the crop area.</param>
+    </member>
+    <member name="M:GemBox.Imaging.Image.RotateFlip(GemBox.Imaging.RotateFlipType)">
+      <summary>
+            Rotates and flips the image by the given enum.
+            </summary>
+      <param name="rotateFlipType">The <see cref="T:GemBox.Imaging.RotateFlipType" /> to perform rotation and flipping.</param>
+    </member>
+    <member name="M:GemBox.Imaging.Image.Dispose">
+      <summary>
+            Releases all resources used by this <see cref="T:GemBox.Imaging.Image" />.
+            </summary>
+    </member>
+    <member name="T:GemBox.Imaging.ImageFileFormat">
+      <summary>
+            Represents an image file format.
+            </summary>
+    </member>
+    <member name="F:GemBox.Imaging.ImageFileFormat.Unknown">
+      <summary>
+            The format of the encoded image is unknown. 
+            </summary>
+    </member>
+    <member name="F:GemBox.Imaging.ImageFileFormat.Png">
+      <summary>
+            The Portable Network Graphics (PNG) format.
+            </summary>
+    </member>
+    <member name="F:GemBox.Imaging.ImageFileFormat.Jpeg">
+      <summary>
+            The Joint Photographics Experts Group (JPEG) format.
+            </summary>
+    </member>
+    <member name="F:GemBox.Imaging.ImageFileFormat.Gif">
+      <summary>
+            The Graphics Interchange Format (GIF).
+            </summary>
+    </member>
+    <member name="F:GemBox.Imaging.ImageFileFormat.Tiff">
+      <summary>
+            The Tagged Image File Format (TIFF).
+            </summary>
+    </member>
+    <member name="T:GemBox.Imaging.RotateFlipType">
+      <summary>
+            Specifies how much an image is rotated and the axis used to flip the image.
+            </summary>
+    </member>
+    <member name="F:GemBox.Imaging.RotateFlipType.Rotate180FlipXY">
+      <summary>
+            Specifies a 180-degree clockwise rotation followed by a horizontal and vertical flip.
+            </summary>
+    </member>
+    <member name="F:GemBox.Imaging.RotateFlipType.RotateNoneFlipNone">
+      <summary>
+            Specifies no clockwise rotation and no flipping.
+            </summary>
+    </member>
+    <member name="F:GemBox.Imaging.RotateFlipType.Rotate270FlipXY">
+      <summary>
+            Specifies a 270-degree clockwise rotation followed by a horizontal and vertical flip.
+            </summary>
+    </member>
+    <member name="F:GemBox.Imaging.RotateFlipType.Rotate90FlipNone">
+      <summary>
+            Specifies a 90-degree clockwise rotation without flipping.
+            </summary>
+    </member>
+    <member name="F:GemBox.Imaging.RotateFlipType.Rotate180FlipNone">
+      <summary>
+            Specifies a 180-degree clockwise rotation without flipping.
+            </summary>
+    </member>
+    <member name="F:GemBox.Imaging.RotateFlipType.RotateNoneFlipXY">
+      <summary>
+            Specifies no clockwise rotation followed by a horizontal and vertical flip.
+            </summary>
+    </member>
+    <member name="F:GemBox.Imaging.RotateFlipType.Rotate270FlipNone">
+      <summary>
+            Specifies a 270-degree clockwise rotation without flipping.
+            </summary>
+    </member>
+    <member name="F:GemBox.Imaging.RotateFlipType.Rotate90FlipXY">
+      <summary>
+            Specifies a 90-degree clockwise rotation followed by a horizontal and vertical flip.
+            </summary>
+    </member>
+    <member name="F:GemBox.Imaging.RotateFlipType.Rotate180FlipY">
+      <summary>
+            Specifies a 180-degree clockwise rotation followed by a vertical flip.
+            </summary>
+    </member>
+    <member name="F:GemBox.Imaging.RotateFlipType.RotateNoneFlipX">
+      <summary>
+            Specifies no clockwise rotation followed by a horizontal flip.
+            </summary>
+    </member>
+    <member name="F:GemBox.Imaging.RotateFlipType.Rotate270FlipY">
+      <summary>
+            Specifies a 270-degree clockwise rotation followed by a vertical flip.
+            </summary>
+    </member>
+    <member name="F:GemBox.Imaging.RotateFlipType.Rotate90FlipX">
+      <summary>
+            Specifies a 90-degree clockwise rotation followed by a horizontal flip.
+            </summary>
+    </member>
+    <member name="F:GemBox.Imaging.RotateFlipType.Rotate180FlipX">
+      <summary>
+            Specifies a 180-degree clockwise rotation followed by a horizontal flip.
+            </summary>
+    </member>
+    <member name="F:GemBox.Imaging.RotateFlipType.RotateNoneFlipY">
+      <summary>
+            Specifies no clockwise rotation followed by a vertical flip.
+            </summary>
+    </member>
+    <member name="F:GemBox.Imaging.RotateFlipType.Rotate270FlipX">
+      <summary>
+            Specifies a 270-degree clockwise rotation followed by a horizontal flip.
+            </summary>
+    </member>
+    <member name="F:GemBox.Imaging.RotateFlipType.Rotate90FlipY">
+      <summary>
+            Specifies a 90-degree clockwise rotation followed by a vertical flip.
+            </summary>
+    </member>
+  </members>
+</doc>
